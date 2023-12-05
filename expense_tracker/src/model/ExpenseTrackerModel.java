@@ -29,7 +29,6 @@ public class ExpenseTrackerModel {
    * Adds a transaction, t, to the transactions list
    *
    * @param t The new transaction to be added
-   * @return void
    */  
   public void addTransaction(Transaction t) {
     // Perform input validation to guarantee that all transactions added are non-null.
@@ -46,7 +45,6 @@ public class ExpenseTrackerModel {
    * Removes the transaction, t, from the transactions list
    *
    * @param t The new transaction to be removed
-   * @return void
    */  
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
@@ -58,7 +56,6 @@ public class ExpenseTrackerModel {
   /**
    * Gets the list of transactions
    *
-   * @param 
    * @return A list of transactions
    */  
   public List<Transaction> getTransactions() {
@@ -70,7 +67,6 @@ public class ExpenseTrackerModel {
    * All the non-null indices. once validated, are added to the input list after it is cleared
    *
    * @param newMatchedFilterIndices List of input indices
-   * @return void
    */  
   public void setMatchedFilterIndices(List<Integer> newMatchedFilterIndices) {
       // Perform input validation
@@ -91,7 +87,6 @@ public class ExpenseTrackerModel {
   /**
    * Returns the a copy of list of filter indeces
    *
-   * @param 
    * @return A list of integers
    */  
   public List<Integer> getMatchedFilterIndices() {
@@ -126,7 +121,6 @@ public class ExpenseTrackerModel {
   /**
    * Returns the number of listerners that have been registered 
    *
-   * @param 
    * @return An integer representing the number of listeners
    */  
   public int numberOfListeners() {
@@ -142,7 +136,6 @@ public class ExpenseTrackerModel {
   /**
    * Checks whether a listener has been registered, returns True if it has, false if not
    *
-   * @param 
    * @return A boolean, true if the list of listeners contains the new listener, false otherwise
    */  
   public boolean containsListener(ExpenseTrackerModelListener listener) {
@@ -158,8 +151,6 @@ public class ExpenseTrackerModel {
   /**
    * Updates the view when the state of the model has changed
    *
-   * @param 
-   * @return void
    */  
   protected void stateChanged() {
       // For the Observable class, this is one of the methods.
