@@ -3,7 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/** Represents the model for an Expense Tracker.
+ * @author Heather Conboy
+ * @version 1.0
+*/
 public class ExpenseTrackerModel {
 
   //encapsulation - data integrity
@@ -14,13 +17,20 @@ public class ExpenseTrackerModel {
 
   // This is applying the Observer design pattern.                          
   // Specifically, this is the Observable class. 
-    
+  /** Creates an expense tracker model.
+  */
   public ExpenseTrackerModel() {
     transactions = new ArrayList<Transaction>();
     matchedFilterIndices = new ArrayList<Integer>();
     listeners = new ArrayList<ExpenseTrackerModelListener>();
   }
 
+  /**
+   * Adds a transaction, t, to the transactions list
+   *
+   * @param t The new transaction to be added
+   * @return void
+   */  
   public void addTransaction(Transaction t) {
     // Perform input validation to guarantee that all transactions added are non-null.
     if (t == null) {
@@ -32,6 +42,12 @@ public class ExpenseTrackerModel {
     stateChanged();
   }
 
+  /**
+   * Removes the transaction, t, from the transactions list
+   *
+   * @param t The new transaction to be removed
+   * @return void
+   */  
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
     // The previous filter is no longer valid.
@@ -39,11 +55,23 @@ public class ExpenseTrackerModel {
     stateChanged();
   }
 
+  /**
+   * Gets the list of transactions
+   *
+   * @param 
+   * @return A list of transactions
+   */  
   public List<Transaction> getTransactions() {
     //encapsulation - data integrity
     return Collections.unmodifiableList(new ArrayList<>(transactions));
   }
 
+  /**
+   * All the non-null indices. once validated, are added to the input list after it is cleared
+   *
+   * @param newMatchedFilterIndices List of input indices
+   * @return void
+   */  
   public void setMatchedFilterIndices(List<Integer> newMatchedFilterIndices) {
       // Perform input validation
       if (newMatchedFilterIndices == null) {
@@ -60,6 +88,12 @@ public class ExpenseTrackerModel {
       stateChanged();
   }
 
+  /**
+   * Returns the a copy of list of filter indeces
+   *
+   * @param 
+   * @return A list of integers
+   */  
   public List<Integer> getMatchedFilterIndices() {
       // For encapsulation, copy out the output list
       List<Integer> copyOfMatchedFilterIndices = new ArrayList<Integer>();
@@ -72,7 +106,7 @@ public class ExpenseTrackerModel {
    * state change events.
    *
    * @param listener The ExpenseTrackerModelListener to be registered
-   * @return If the listener is non-null and not already registered,
+   * @return A boolean, if the listener is non-null and not already registered,
    *         returns true. If not, returns false.
    */   
   public boolean register(ExpenseTrackerModelListener listener) {
@@ -89,6 +123,12 @@ public class ExpenseTrackerModel {
       return false;
   }
 
+  /**
+   * Returns the number of listerners that have been registered 
+   *
+   * @param 
+   * @return An integer representing the number of listeners
+   */  
   public int numberOfListeners() {
       // For testing, this is one of the methods.
       //
@@ -99,6 +139,12 @@ public class ExpenseTrackerModel {
       return listeners.size();
   }
 
+  /**
+   * Checks whether a listener has been registered, returns True if it has, false if not
+   *
+   * @param 
+   * @return A boolean, true if the list of listeners contains the new listener, false otherwise
+   */  
   public boolean containsListener(ExpenseTrackerModelListener listener) {
       // For testing, this is one of the methods.
       //
@@ -109,6 +155,12 @@ public class ExpenseTrackerModel {
       return listeners.contains(listener);
   }
 
+  /**
+   * Updates the view when the state of the model has changed
+   *
+   * @param 
+   * @return void
+   */  
   protected void stateChanged() {
       // For the Observable class, this is one of the methods.
       //
